@@ -1,0 +1,40 @@
+<%- include("partial/header.ejs") %>
+<main>
+    <% if(locals.data){ %>
+        <form action="/search" method="post" class="menu">
+            <input type="hidden" name="animeName" value="<%= aName %>">
+        <% for(let i=1;i<=data.pagination.last_visible_page;i++){ %>
+            <input type="submit" name="currentPage" value="<%= i %>">
+            <% } %>
+        </form>
+        <div class="animeContainer">
+            <% for(let i=0;i<data.pagination.items["count"];i++){ %>
+            <a href="/info?id=<%= data.data[i].mal_id %>" class="card">
+                <img src="<%= data.data[i].images.jpg.image_url %>" alt="">
+                <div class="cardName">
+                    <h2><%= data.data[i].title_english %></h2>
+                </div>
+            </a> 
+            <% } %>
+        </div>
+        <form action="/search" method="post" class="menu">
+            <input type="hidden" name="animeName" value="<%= aName %>">
+        <% for(let i=1;i<=data.pagination.last_visible_page;i++){ %>
+            <input type="submit" name="currentPage" value="<%= i %>">
+            <% } %>
+        </form>
+        <% }else{ %>
+    <div class="container">
+<div class="header">
+    
+    <h1>Anime Finder</h1>
+    <form class="sForm" action="/search" method="post">
+        <input type="hidden" name="currentPage" value="1">
+        <input type="search" class="searchbar" name="animeName" placeholder="eg:Naruto">
+        <input type="submit" class="btn" value="search">
+    </form>
+</div>
+</div>
+<% } %>
+</main>
+<%- include("partial/footer.ejs") %>

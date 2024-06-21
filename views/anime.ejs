@@ -1,0 +1,21 @@
+<%- include("partial/header.ejs") %>
+<% if(locals.data){ %>
+<main>
+    <div>
+    <div class="infoContainer">
+        <div class="col1">
+            <img src="<%= data.data.images.jpg.large_image_url %>" alt="">
+        </div>
+        <div class="col2">
+            <h2>Title:<span><%= data.data.title_english %></span></h2>
+            <p>Type:<span><%= data.data.type %></span></p>
+            <p>Score:<span><%= data.data.score %></span></p>
+            <p>Rating:<span><%= data.data.rating %></span></p>
+            
+        </div>
+        <p class="g">description: <%=data.data.synopsis %></p>
+    </div>
+</div>
+</main>
+<% } %>
+<%- include("partial/footer.ejs") %>
